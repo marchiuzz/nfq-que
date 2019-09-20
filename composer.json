@@ -3,6 +3,7 @@
     "description": "Waiting in que system for nfq",
     "type": "project",
     "require": {
+        "php": "^7.1.3",
         "illuminate/database": "^6.0"
     },
     "autoload": {
