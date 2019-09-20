@@ -1,0 +1,21 @@
+{
+    "name": "marchiuzz/nfq-que",
+    "description": "Waiting in que system for nfq",
+    "type": "project",
+    "require": {
+        "illuminate/database": "^6.0"
+    },
+    "autoload": {
+        "classmap": [
+            "app/models"
+        ]
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "marchiuzz",
+            "email": "marchiuzz@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable"
+}
