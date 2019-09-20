@@ -8,9 +8,9 @@ $capsule = new Capsule();
 $capsule->addConnection([
     'driver' => 'mysql',
     'host' => 'localhost',
-    'username' => 'username',
+    'username' => 'root',
     'password' => '',
-    'database' => 'db-name',
+    'database' => 'ticketing',
     'charset' => 'utf8',
     'collation' => 'utf8_unicode_ci',
     'prefix' => ''
