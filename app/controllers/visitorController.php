@@ -9,14 +9,19 @@ use Illuminate\Database\Capsule\Manager as DB;
 class visitorController extends Controller
 {
 
+    private $visitorRepository;
+    public function __invoke()
+    {
+        $visitorRepository = new VisitorRepository();
+    }
+
     public function index($maxVisitorsToShow = 10)
     {
-        $visitors = Visitor::doesnthave('finishedVisitor')->limit($maxVisitorsToShow)->get();
+        $visitors = $visitorRepository->visitorsWithoutFinish(10);
         $averageWaitingTime = $this->averageVisitorWaitingTimeInSecs();
         $formattedAverageWaitingTime = Helper::TimeText($averageWaitingTime);
         $this->view('visitor/index', ['visitors' => $visitors, 'formattedAverageWaitingTime' => $formattedAverageWaitingTime]);
     }
-
 
 
     public function create()

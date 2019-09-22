@@ -35,7 +35,6 @@ class Helper
         elseif ($seconds < 120)
             // 1 minute
             $timeName = _(" minutę");
-
         elseif ($seconds < 60 * 60)
             // <1 hour
             $timeName = floor($seconds / 60) . _(" minučių");
