@@ -1,3 +1,13 @@
+<?php
+if(isset($data['finishedInSeconds']) && $data['finishedInSeconds'] > 0) {
+    ?>
+    <div class="alert alert-warning" role="alert">
+        Šį klientą aptarnauti tau prireikė <?= $data['finishedInSeconds'] ?>
+    </div>
+    <?php
+}
+?>
+
 <table class="table">
     <thead>
     <tr>

@@ -1,6 +1,22 @@
-<div class="alert alert-primary" role="alert">
-    Vidutiniškai reikės laukti <?= $data['formattedAverageWaitingTime']?>
-</div>
+<?php
+if(isset($data['finishedInSeconds']) && $data['finishedInSeconds'] > 0) {
+    ?>
+    <div class="alert alert-warning" role="alert">
+        Šį klientą aptarnauti tau prireikė <?= $data['finishedInSeconds'] ?>
+    </div>
+    <?php
+}
+?>
+
+<?php
+if($data['formattedAverageWaitingTime'] > 0) {
+    ?>
+    <div class="alert alert-primary" role="alert">
+        Vidutiniškai reikės laukti <?= $data['formattedAverageWaitingTime'] ?>
+    </div>
+    <?php
+}
+?>
 
 <table class="table">
     <thead>
@@ -27,6 +43,7 @@
         </tr>
         <?
     }
+
     ?>
     </tbody>
 </table>
