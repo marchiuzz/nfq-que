@@ -1,2 +1,2 @@
 <?php
-define('URL', 'http://localhost/CodeAcademy/nfq-que/public');
+define('URL', 'http://localhost/nfq-que/public');
