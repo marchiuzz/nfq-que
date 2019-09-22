@@ -31,7 +31,7 @@ class Helper
             $timeName = $timeName . _(" sekundę");
         elseif ($seconds < 60)
             // <1 minute
-            $timeName = $seconds . _(" sekundžių");
+            $timeName = number_format((float)$seconds, 2, '.', ''). _(" sekundžių");
         elseif ($seconds < 120)
             // 1 minute
             $timeName = _(" minutę");
