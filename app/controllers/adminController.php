@@ -3,21 +3,20 @@
 class adminController extends Controller {
     public function index()
     {
-        $visitors = Visitor::orderByDesc('created_at')->get();
-        $this->view('admin/index', ['waitingVisitors' => $visitors]);
+        $visitors = Visitor::doesnthave('finishedVisitor')->orderBy('created_at')->get();
+        $this->view('admin/index', ['visitors' => $visitors]);
     }
 
     public function storeVisitorToArchive($visitorId = 0)
     {
         $visitorId = (int)$visitorId;
         if($visitorId > 0){
-
             $visitor = Visitor::find($visitorId);
+            $finishedVisitor = new FinishedVisitor();
 
-            var_dump($visitor->finishedVisitor()->attach($visitorId));
-            die();
+            $visitor->finishedVisitor()->save($finishedVisitor);
 
-//            $visitor->finishedVisitors()->attach($visitorId);
+            $this->index();
         }
 
     }

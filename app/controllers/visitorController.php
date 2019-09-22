@@ -12,8 +12,10 @@ class visitorController extends Controller
     public function index($maxVisitorsToShow = 10)
     {
         $visitors = Visitor::doesnthave('finishedVisitor')->limit($maxVisitorsToShow)->get();
+
         $this->view('visitor/index', ['visitors' => $visitors]);
     }
+
 
 
     public function create()

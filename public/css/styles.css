@@ -10,3 +10,7 @@ body {
     display: block;
     margin-bottom: 50px;
 }
+
+.background.grey {
+    background-color: grey;
+}
