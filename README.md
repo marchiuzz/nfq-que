@@ -12,5 +12,4 @@ A system, where user can get a number in waiting que
 - Create mysql database
 - Run `cd app/` command
 - Run `cp config/db.example.php config/db.php` command
-
-######...... more to come, like mysql dump..
+- Import **mysql-dump.sql** to your database
