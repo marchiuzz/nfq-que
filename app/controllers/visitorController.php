@@ -25,6 +25,11 @@ class visitorController extends Controller
 
     public function create()
     {
+        $this->view('visitor/create');
+    }
+
+    public function store()
+    {
         if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['visitor_name']) && !empty($_POST['visitor_name'])){
             $name = $_POST['visitor_name'];
             $parts = explode(' ', $name);
@@ -48,8 +53,6 @@ class visitorController extends Controller
             }
             return false;
         }
-
-        $this->view('visitor/create');
     }
 
     public function averageVisitorWaitingTimeInSecs(): float

@@ -11,7 +11,7 @@ if(isset($data['errors'])) {
 }
 ?>
 
-<form method="post" target="" role="form">
+<form method="post" action="<?= URL ?>/visitor/store" role="form">
     <div class="form-group">
         <label for="visitor_name">Your name (Vardas turi buti Vardenis)</label>
         <input type="text" class="form-control" id="visitor_name" name="visitor_name" value="<?= isset($data['visitorName']) ? $data['visitorName'] : "" ?>" placeholder="Your name?" required>
