@@ -1,3 +1,7 @@
+<div class="alert alert-primary" role="alert">
+    Vidutiniškai reikės laukti <?= $data['formattedAverageWaitingTime']?>
+</div>
+
 <table class="table">
     <thead>
     <tr>
@@ -8,6 +12,8 @@
     </tr>
     </thead>
     <tbody>
+
+
     <?php
 
     $i = 0;

@@ -12,7 +12,9 @@ class visitorController extends Controller
     public function index($maxVisitorsToShow = 10)
     {
         $visitors = Visitor::doesnthave('finishedVisitor')->limit($maxVisitorsToShow)->get();
-        $this->view('visitor/index', ['visitors' => $visitors]);
+        $averageWaitingTime = $this->averageVisitorWaitingTimeInSecs();
+        $formattedAverageWaitingTime = Helper::TimeText($averageWaitingTime);
+        $this->view('visitor/index', ['visitors' => $visitors, 'formattedAverageWaitingTime' => $formattedAverageWaitingTime]);
     }
 
 
@@ -31,12 +33,21 @@ class visitorController extends Controller
         $this->view('visitor/create');
     }
 
-    public function averageVisitorWaitingTime(){
-        $sql = "TIMESTAMPDIFF(SECOND,started,finished)";
-        echo "<pre>";
-        echo( TimesLog::select(DB::raw($sql))->get() );
-        echo "</pre>";
-        die();
+    private function waitingTimesDifference(): array
+    {
+        $sql = "TIMESTAMPDIFF(SECOND,started,finished) as seconds";
+        $waitingTimesDiffInSeconds = TimesLog::select(DB::raw($sql))->pluck('seconds')->toArray();
+
+        return $waitingTimesDiffInSeconds;
+    }
+
+    public function averageVisitorWaitingTimeInSecs(): float
+    {
+        $waitingTimesDiffInSeconds = $this->waitingTimesDifference();
+        $a = array_filter($waitingTimesDiffInSeconds);
+        $average = array_sum($a)/count($a);
+
+        return $average;
     }
 
 
