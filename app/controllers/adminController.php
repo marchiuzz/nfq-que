@@ -7,9 +7,18 @@ class adminController extends Controller {
         $this->view('admin/index', ['waitingVisitors' => $visitors]);
     }
 
-    public function storeNewVisitor($visitorId = "")
+    public function storeVisitorToArchive($visitorId = 0)
     {
-        echo $visitorId;
-        die();
+        $visitorId = (int)$visitorId;
+        if($visitorId > 0){
+
+            $visitor = Visitor::find($visitorId);
+
+            var_dump($visitor->finishedVisitor()->attach($visitorId));
+            die();
+
+//            $visitor->finishedVisitors()->attach($visitorId);
+        }
+
     }
 }

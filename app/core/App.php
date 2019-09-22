@@ -37,7 +37,7 @@ class App
     {
         if (isset($_GET['url'])) {
             $url = $_GET['url'];
-            $url = rtrim($_GET['url'], '/');
+            $url = rtrim($url, '/');
             $url = filter_var($url, FILTER_SANITIZE_URL);
             $url = explode('/', $url);
 

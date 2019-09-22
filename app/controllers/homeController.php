@@ -11,6 +11,11 @@ class homeController extends Controller
      */
     public function index($name = '')
     {
-        $this->view('home/index');
+        $visitor = Visitor::find(1);
+
+        echo ($visitor->finishedVisitor->pluck('visitor_id'));
+
+        die();
+        $this->view('home/index', ['finishedVisitors' => $finishedVisitors]);
     }
 }

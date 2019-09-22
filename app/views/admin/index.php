@@ -15,7 +15,7 @@
         <tr>
             <td scope="row"><?= ++$i ?></td>
             <td><?= $visitor->name ?></td>
-            <td><a href="<?= URL ?>/admin/storeNewVisitor/<?= $visitor->id ?>" class="btn btn-success">Client finished</a></td>
+            <td><a href="<?= URL ?>/admin/storeVisitorToArchive/<?= $visitor->id ?>" class="btn btn-success">Client finished</a></td>
         </tr>
         <?
     }

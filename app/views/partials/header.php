@@ -18,7 +18,7 @@
 
 <div class="menu-wrapper">
     <div class="menu">
-        <a href="<?= URL ?>/visitor/index" class="btn btn-light">Waiting List</a>
+        <a href="<?= URL ?>/visitor/index/3" class="btn btn-light">Waiting List</a>
         <a href="<?= URL ?>/visitor/create" class="btn btn-light">New Client</a>
         <a href="<?= URL ?>/admin/index" class="btn btn-light">Admin</a>
     </div>
