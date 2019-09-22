@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-use Illuminate\Database\Eloquent\Builder as Builder;
+use Illuminate\Database\Capsule\Manager as DB;
 
 /**
  * Class visitorController
@@ -12,7 +12,6 @@ class visitorController extends Controller
     public function index($maxVisitorsToShow = 10)
     {
         $visitors = Visitor::doesnthave('finishedVisitor')->limit($maxVisitorsToShow)->get();
-
         $this->view('visitor/index', ['visitors' => $visitors]);
     }
 
@@ -30,6 +29,14 @@ class visitorController extends Controller
         }
 
         $this->view('visitor/create');
+    }
+
+    public function averageVisitorWaitingTime(){
+        $sql = "TIMESTAMPDIFF(SECOND,started,finished)";
+        echo "<pre>";
+        echo( TimesLog::select(DB::raw($sql))->get() );
+        echo "</pre>";
+        die();
     }
 
 

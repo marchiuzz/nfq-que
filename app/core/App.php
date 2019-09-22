@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 class App
 {
-    protected $controller = "homeController";
+    protected $controller = "visitorController";
     protected $method = "index";
     protected $params = [];
 
