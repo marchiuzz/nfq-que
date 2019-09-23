@@ -35,12 +35,16 @@ class visitorController extends Controller
 
             $error = [];
             if($name == ""){
-                $error[] = "Neužpildyta";
+                $error[] = "Fill your anme";
             }
 
             $nameWithoutSpaces = str_replace(' ', '', $name);
             if(!(preg_match('/^\p{L}+$/u', $nameWithoutSpaces))){
-                $error[] = "Vardas gali būti sudarytas tik iš raidžių";
+                $error[] = "Your name has to be only letters";
+            }
+
+            if(strlen($name) < 4){
+                $error[] = "You have to input your full real name";
             }
 
             if(count($error) > 0){
