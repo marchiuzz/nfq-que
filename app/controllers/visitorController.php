@@ -32,22 +32,21 @@ class visitorController extends Controller
     {
         if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['visitor_name']) && !empty($_POST['visitor_name'])){
             $name = $_POST['visitor_name'];
-            $parts = explode(' ', $name);
-            $firstname = count($parts) > 0 ? trim($parts[0]) : "";
 
             $error = [];
-            if($firstname == ""){
+            if($name == ""){
                 $error[] = "Neužpildyta";
             }
 
-            if($firstname !== "Vardenis"){
-                $error[] = "Vardas turi būti Vardenis";
+            $nameWithoutSpaces = str_replace(' ', '', $name);
+            if(!(preg_match('/^\p{L}+$/u', $nameWithoutSpaces))){
+                $error[] = "Vardas gali būti sudarytas tik iš raidžių";
             }
 
             if(count($error) > 0){
                 $this->view('visitor/create', ['errors' => $error, 'visitorName' => $name]);
             } else {
-                $this->visitorRepository->saveNewVisitorToQue($_POST['visitor_name']);
+                $this->visitorRepository->saveNewVisitorToQue($name);
                 $this->index();
 
             }
